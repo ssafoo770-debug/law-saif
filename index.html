@@ -36,30 +36,72 @@
             overflow-x: hidden;
         }
 
-        /* زر تشغيل الموسيقى العائم */
-        .music-btn-floating {
+        /* شاشة الترحيب المقدمة (Splash Screen) */
+        #splash-screen {
             position: fixed;
-            bottom: 20px;
-            left: 20px;
-            z-index: 9999;
-            background-color: var(--accent-gold);
-            color: var(--primary-dark);
-            border: none;
-            padding: 0.8rem 1.2rem;
-            border-radius: 50px;
-            font-weight: 700;
-            font-size: 0.9rem;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-            cursor: pointer;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background-color: var(--primary-dark);
             display: flex;
+            flex-direction: column;
+            justify-content: center;
             align-items: center;
-            gap: 8px;
-            transition: all 0.3s ease;
+            z-index: 99999;
+            transition: opacity 0.8s ease, visibility 0.8s ease;
+            color: var(--text-light);
+            text-align: center;
+            padding: 1.5rem;
         }
 
-        .music-btn-floating:hover {
-            background-color: var(--accent-gold-hover);
-            transform: scale(1.05);
+        .splash-icon {
+            font-size: 4rem;
+            color: var(--accent-gold);
+            margin-bottom: 1.5rem;
+            animation: pulse 2s infinite ease-in-out;
+        }
+
+        .splash-title {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--accent-gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .splash-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+        }
+
+        .splash-loader {
+            width: 50px;
+            height: 3px;
+            background: rgba(197, 160, 89, 0.2);
+            position: relative;
+            overflow: hidden;
+            border-radius: 3px;
+        }
+
+        .splash-loader::after {
+            content: '';
+            position: absolute;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--accent-gold);
+            animation: loading 2.5s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+        }
+
+        @keyframes loading {
+            0% { left: -100%; }
+            100% { left: 100%; }
         }
 
         /* الهيدر وقائمة التنقل */
@@ -115,7 +157,7 @@
             color: var(--accent-gold);
         }
 
-        /* Hero Section - صورة خلفية قانونية فاخرة */
+        /* Hero Section */
         .hero {
             background: linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.9)), 
                         url('https://images.unsplash.com/photo-1505664194779-8beaceb93744?auto=format&fit=crop&q=80&w=1600') center/cover;
@@ -354,15 +396,13 @@
 </head>
 <body>
 
-    <!-- مشغل الموسيقى وزر التحكم العائم (موسيقى بيانو ورقيقة جداً) -->
-    <audio id="bgMusic" loop>
-        <source src="https://www.fesliyanstudios.com/musicfiles/2019-04-23_-_Quiet_Time_-_David_Fesliyan.mp3" type="audio/mpeg">
-    </audio>
-
-    <button class="music-btn-floating" onclick="toggleMusic()">
-        <i id="musicIcon" class="fa-solid fa-music"></i>
-        <span id="musicText">تشغيل الموسيقى</span>
-    </button>
+    <!-- الشاشة الترحيبية الأنيقة (تظهر عند فتح الرابط وتحولك فوراً للموقع) -->
+    <div id="splash-screen">
+        <i class="fa-solid fa-scale-balanced splash-icon"></i>
+        <div class="splash-title">المحامي سيف سامر</div>
+        <div class="splash-subtitle">مكتب الاستشارات والمحاماة</div>
+        <div class="splash-loader"></div>
+    </div>
 
     <!-- الهيدر -->
     <header>
@@ -459,33 +499,14 @@
 
     <!-- السكربتات -->
     <script>
-        // سكربت التحكم بالموسيقى
-        function toggleMusic() {
-            const music = document.getElementById('bgMusic');
-            const icon = document.getElementById('musicIcon');
-            const text = document.getElementById('musicText');
-
-            if (music.paused) {
-                music.play();
-                icon.className = 'fa-solid fa-pause';
-                text.textContent = 'إيقاف الموسيقى';
-            } else {
-                music.pause();
-                icon.className = 'fa-solid fa-music';
-                text.textContent = 'تشغيل الموسيقى';
-            }
-        }
-
-        // تشغيل الموسيقى عند أول ضغطة زائر على أي مكان بالموقع
-        document.body.addEventListener('click', function() {
-            const music = document.getElementById('bgMusic');
-            if (music.paused) {
-                music.play().then(() => {
-                    document.getElementById('musicIcon').className = 'fa-solid fa-pause';
-                    document.getElementById('musicText').textContent = 'إيقاف الموسيقى';
-                }).catch(() => {});
-            }
-        }, { once: true });
+        // إخفاء الصفحة الترحيبية بعد 2.5 ثانية بسلاسة
+        window.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => {
+                const splash = document.getElementById('splash-screen');
+                splash.style.opacity = '0';
+                splash.style.visibility = 'hidden';
+            }, 2500);
+        });
 
         // سكربت إرسال الطلب للواتساب
         document.getElementById('legalForm').addEventListener('submit', function(e) {
