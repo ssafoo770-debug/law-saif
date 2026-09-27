@@ -71,7 +71,8 @@
         .nav-links {
             display: flex;
             list-style: none;
-            gap: 2rem;
+            gap: 1.5rem;
+            align-items: center;
         }
 
         .nav-links a {
@@ -83,6 +84,23 @@
 
         .nav-links a:hover {
             color: var(--accent-gold);
+        }
+
+        /* زر اتصل بنا في الهيدر */
+        .phone-btn-header {
+            background-color: var(--accent-gold);
+            color: var(--primary-dark) !important;
+            padding: 0.4rem 0.9rem;
+            border-radius: 6px;
+            font-weight: 700 !important;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            direction: ltr;
+        }
+
+        .phone-btn-header:hover {
+            background-color: var(--accent-gold-hover);
         }
 
         /* Hero Section */
@@ -112,6 +130,13 @@
             color: #cbd5e1;
         }
 
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
         .btn-gold {
             background-color: var(--accent-gold);
             color: var(--primary-dark);
@@ -128,6 +153,28 @@
 
         .btn-gold:hover {
             background-color: var(--accent-gold-hover);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline-gold {
+            background-color: transparent;
+            color: var(--accent-gold);
+            border: 2px solid var(--accent-gold);
+            padding: 0.8rem 1.8rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            direction: ltr;
+        }
+
+        .btn-outline-gold:hover {
+            background-color: var(--accent-gold);
+            color: var(--primary-dark);
             transform: translateY(-2px);
         }
 
@@ -155,16 +202,40 @@
             margin: 0.5rem auto 2.5rem auto;
         }
 
-        /* عن المحامي */
+        /* عن المحامي مع ظل ميزان العدالة في الخلفية */
         .about-grid {
+            position: relative;
             display: grid;
             grid-template-columns: 1fr;
             gap: 2rem;
             background: var(--white);
-            padding: 2.5rem;
+            padding: 3rem 2.5rem;
             border-radius: 12px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.05);
             border-right: 5px solid var(--accent-gold);
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        /* إنشاء ظل ميزان العدالة خلف النص */
+        .about-grid::before {
+            content: "\f24e";
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            position: absolute;
+            left: -30px;
+            bottom: -40px;
+            font-size: 22rem;
+            color: var(--accent-gold);
+            opacity: 0.05;
+            z-index: -1;
+            pointer-events: none;
+            transform: rotate(-15deg);
+        }
+
+        .about-grid h3, .about-grid p {
+            position: relative;
+            z-index: 2;
         }
 
         /* الخدمات القانونية */
@@ -255,6 +326,16 @@
             margin-bottom: 0.5rem;
         }
 
+        footer a {
+            color: var(--accent-gold);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
         /* التجاوب مع الموبايل */
         @media (max-width: 768px) {
             .nav-container {
@@ -268,6 +349,16 @@
 
             .section-padding {
                 padding: 3rem 1rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .about-grid::before {
+                font-size: 14rem;
+                left: -20px;
+                bottom: -20px;
             }
         }
     </style>
@@ -286,6 +377,11 @@
                 <li><a href="#about">عن المحامي</a></li>
                 <li><a href="#services">الخدمات</a></li>
                 <li><a href="#consultation">طلب استشارة</a></li>
+                <li>
+                    <a href="tel:07888001875" class="phone-btn-header">
+                        <i class="fa-solid fa-phone"></i> 07888001875
+                    </a>
+                </li>
             </ul>
         </div>
     </header>
@@ -295,7 +391,10 @@
         <div class="hero-content">
             <h1>مكتب المحامي سيف سامر</h1>
             <p>تقديم أفضل الاستشارات القانونية والتمثيل القضائي بكل احترافية وأمانة للظفر بحقوقكم.</p>
-            <a href="#consultation" class="btn-gold">اطلب استشارة قانونية الآن</a>
+            <div class="hero-buttons">
+                <a href="#consultation" class="btn-gold">اطلب استشارة قانونية الآن</a>
+                <a href="tel:07888001875" class="btn-outline-gold"><i class="fa-solid fa-phone"></i> 07888001875</a>
+            </div>
         </div>
     </section>
 
@@ -341,7 +440,6 @@
             <h2 class="section-title" style="color: var(--text-light);">طلب استشارة قانونية</h2>
             <p style="text-align: center; margin-bottom: 2rem; color: var(--text-muted);">قم بملء البيانات أدناه وسيتم فتح الواتساب وتجهيز الرسالة وتلقيها فوراً.</p>
 
-            <!-- استبدل الرابط أدناه برابط Formspree الخاص بإيميلك للإرسال إلى البريد -->
             <form id="legalForm" action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST">
                 <div class="form-group">
                     <label for="fullName">الاسم الثلاثي</label>
@@ -366,14 +464,12 @@
     <!-- الفوتر -->
     <footer>
         <p>جميع الحقوق محفوظة &copy; 2026 - مكتب المحامي سيف سامر</p>
-        <p>هاتف: 07888001875</p>
+        <p>للاتصال المباشر: <a href="tel:07888001875" dir="ltr">07888001875</a> | <a href="https://wa.me/9647888001875" target="_blank">تواصل عبر الواتساب <i class="fa-brands fa-whatsapp"></i></a></p>
     </footer>
 
     <!-- سكربت تحويل البيانات إلى واتساب -->
     <script>
         document.getElementById('legalForm').addEventListener('submit', function(e) {
-            // نمنع إعادة تحميل الصفحة الافتراضية للنموذج لإتاحة الإرسال عبر الواتساب
-            // إذا كنت تريد الإرسال إلى البريد عبر Formspree أولاً، يمكنك إلغاء e.preventDefault() بعد إعداد الخدمة.
             e.preventDefault();
 
             // جلب البيانات من الحقول
@@ -396,9 +492,6 @@
 
             // فتح الواتساب في نافذة جديدة
             window.open(whatsappURL, '_blank');
-
-            // اختياري: إرسال النموذج فعلياً إلى البريد في الخلفية
-            this.submit();
         });
     </script>
 </body>
