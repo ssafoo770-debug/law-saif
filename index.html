@@ -227,7 +227,7 @@
             margin: 0.5rem auto 2rem auto;
         }
 
-        /* عن المحامي مع ظل ميزان العدالة الشفاف */
+        /* عن المحامي */
         .about-grid {
             position: relative;
             display: grid;
@@ -311,6 +311,7 @@
 
         .form-group {
             margin-bottom: 1.2rem;
+            text-align: right;
         }
 
         .form-group label {
@@ -318,6 +319,7 @@
             margin-bottom: 0.4rem;
             color: var(--accent-gold);
             font-weight: 500;
+            text-align: right;
         }
 
         .form-group input, 
@@ -329,6 +331,15 @@
             background-color: #0f172a;
             color: var(--text-light);
             font-size: 0.95rem;
+            text-align: right;
+            direction: rtl;
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            text-align: right;
+            direction: rtl;
+            color: #64748b;
         }
 
         .form-group input:focus, 
@@ -396,7 +407,7 @@
 </head>
 <body>
 
-    <!-- الشاشة الترحيبية الأنيقة (تظهر عند فتح الرابط وتحولك فوراً للموقع) -->
+    <!-- الشاشة الترحيبية -->
     <div id="splash-screen">
         <i class="fa-solid fa-scale-balanced splash-icon"></i>
         <div class="splash-title">المحامي سيف سامر</div>
@@ -479,7 +490,7 @@
 
                 <div class="form-group">
                     <label for="phone">رقم الهاتف</label>
-                    <input type="tel" id="phone" name="phone" placeholder="أدخل رقم هاتفك" required>
+                    <input type="tel" id="phone" name="phone" placeholder="أدخل رقم هاتفك" dir="rtl" style="text-align: right;" required>
                 </div>
 
                 <div class="form-group">
@@ -499,7 +510,7 @@
 
     <!-- السكربتات -->
     <script>
-        // إخفاء الصفحة الترحيبية بعد 2.5 ثانية بسلاسة
+        // إخفاء الصفحة الترحيبية
         window.addEventListener('DOMContentLoaded', () => {
             setTimeout(() => {
                 const splash = document.getElementById('splash-screen');
