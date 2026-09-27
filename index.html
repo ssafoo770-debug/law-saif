@@ -293,6 +293,157 @@
             margin-bottom: 0.5rem;
         }
 
+        /* قسم الأدلة والمستندات القانونية */
+        .docs-section {
+            background-color: #e2e8f0;
+        }
+
+        .docs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .doc-card {
+            background: var(--white);
+            padding: 1.8rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+            border-top: 4px solid var(--accent-gold);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.3s ease;
+        }
+
+        .doc-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .doc-card-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 1rem;
+        }
+
+        .doc-card-header i {
+            font-size: 2rem;
+            color: var(--accent-gold);
+        }
+
+        .doc-card-header h3 {
+            font-size: 1.2rem;
+            color: var(--primary-dark);
+        }
+
+        .doc-card p {
+            color: #64748b;
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .btn-doc {
+            background-color: var(--primary-dark);
+            color: var(--accent-gold);
+            border: 1px solid var(--accent-gold);
+            padding: 0.6rem 1rem;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            cursor: pointer;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .btn-doc:hover {
+            background-color: var(--accent-gold);
+            color: var(--primary-dark);
+        }
+
+        /* النافذة المنبثقة (Modal) للشرح */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(15, 23, 42, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            padding: 1rem;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            background: var(--white);
+            max-width: 700px;
+            width: 100%;
+            max-height: 85vh;
+            overflow-y: auto;
+            border-radius: 12px;
+            padding: 2rem;
+            position: relative;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            border-right: 6px solid var(--accent-gold);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--primary-dark);
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .modal-close:hover {
+            color: var(--accent-gold);
+        }
+
+        .modal-title {
+            color: var(--primary-dark);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .modal-body {
+            color: #334155;
+            font-size: 1rem;
+            line-height: 1.8;
+        }
+
+        .modal-body h4 {
+            color: var(--accent-gold);
+            margin-top: 1.2rem;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .modal-body ul {
+            padding-right: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .modal-body li {
+            margin-bottom: 0.4rem;
+        }
+
         /* نموذج الاستشارة */
         .consultation-section {
             background-color: var(--primary-dark);
@@ -426,6 +577,7 @@
                 <li><a href="#home">الرئيسية</a></li>
                 <li><a href="#about">عن المحامي</a></li>
                 <li><a href="#services">الخدمات</a></li>
+                <li><a href="#docs">الأدلة والمستندات</a></li>
                 <li><a href="#consultation">طلب استشارة</a></li>
             </ul>
         </div>
@@ -476,6 +628,58 @@
         </div>
     </section>
 
+    <!-- قسم الأدلة والمستندات القانونية -->
+    <section id="docs" class="docs-section">
+        <div class="section-padding">
+            <h2 class="section-title">الأدلة والمستندات القانونية</h2>
+            <div class="docs-grid">
+                <!-- بطاقة قانون الأحوال الشخصية -->
+                <div class="doc-card">
+                    <div>
+                        <div class="doc-card-header">
+                            <i class="fa-solid fa-book-bookmark"></i>
+                            <h3>قانون الأحوال الشخصية العراقي</h3>
+                        </div>
+                        <p>دليل شامل لأهم أحكام الزواج، الطلاق، النفقة، الحضانة، والتركات وفقاً للقانون العراقي رقم 188 لسنة 1959 وتعديلاته.</p>
+                    </div>
+                    <button class="btn-doc" onclick="openModal('personal-law')">قراءة الشرح الكامل</button>
+                </div>
+
+                <!-- بطاقة تأسيس الشركات -->
+                <div class="doc-card">
+                    <div>
+                        <div class="doc-card-header">
+                            <i class="fa-solid fa-building"></i>
+                            <h3>كيف تؤسس شركة في العراق؟</h3>
+                        </div>
+                        <p>دليل قانوني خطوة بخطوة يتناول المتطلبات والإجراءات الرسمية لتأسيس الشركات محدودة المسؤولية والمساهمة في العراق.</p>
+                    </div>
+                    <button class="btn-doc" onclick="openModal('company-guide')">قراءة الشرح الكامل</button>
+                </div>
+
+                <!-- بطاقة عقود البيع والعقارات -->
+                <div class="doc-card">
+                    <div>
+                        <div class="doc-card-header">
+                            <i class="fa-solid fa-file-contract"></i>
+                            <h3>دليل العقود العقارية والبيع</h3>
+                        </div>
+                        <p>أهم النصائح والشروط القانونية الحاكمة لتسجيل العقارات وضمان حقوق الطرفين ومنع الاحتيال العقاري.</p>
+                    </div>
+                    <button class="btn-doc" onclick="openModal('realestate-guide')">قراءة الشرح الكامل</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- النافذة المنبثقة لعرض التفاصيل -->
+    <div id="modalOverlay" class="modal-overlay">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal()"><i class="fa-solid fa-xmark"></i></button>
+            <div id="modalContent"></div>
+        </div>
+    </div>
+
     <!-- نموذج الاستشارة -->
     <section id="consultation" class="consultation-section">
         <div class="form-container">
@@ -517,6 +721,77 @@
                 splash.style.opacity = '0';
                 splash.style.visibility = 'hidden';
             }, 2500);
+        });
+
+        // بيانات الشرح الخاص بالمستندات القانونية
+        const docsData = {
+            'personal-law': {
+                title: '<i class="fa-solid fa-book-bookmark" style="color: var(--accent-gold);"></i> شرح قانون الأحوال الشخصية العراقي (رقم 188 لسنة 1959)',
+                content: `
+                    <p>يعد قانون الأحوال الشخصية العراقي من أهم القوانين التي تنظم العلاقات الأسرية. وفيما يلي نبذة قانونية عن أهم المسائل التي يغطيها:</p>
+                    <h4>1. الزواج والخطبة:</h4>
+                    <p>الزواج عقد بين رجل وامرأة تحل له شرعاً غايته إنشاء رابطة للحياة المشتركة والإيجاب والقبول. وتشترط المحكمة أهليّة الزوجين وعقلاً سليماً وإتمام السن القانونية (18 سنة).</p>
+                    <h4>2. حقوق الزوجة والنفقة:</h4>
+                    <p>تجب النفقة للزوجة على الزوج من تاريخ العقد الصحيح وتشمل الطعام والكسوة والسكن المائل المستقل بما يناسب حالة الزوج المالية.</p>
+                    <h4>3. الحضانة وحقوق الطفل:</h4>
+                    <p>الأم أحق بحضانة الولد وتربيته حال marriage وبعد الفرقة، ولا تضار الأم في حضانتها ما لم يطرأ مانع قانوني أو شرعي، وتستمر الحضانة حتى إكمال المحضون سن الـ 10 سنوات وتمدد لمصلحة الصغير.</p>
+                    <h4>4. دعاوى التفريق والطلاق:</h4>
+                    <p>ينظم القانون حالات التفريق للضرر، عدم الإنفاق، الغياب، أو الخلافات المستحكمة مع بيان التفاصيل الخاصة بالمهور والمستحقات الشرعية.</p>
+                `
+            },
+            'company-guide': {
+                title: '<i class="fa-solid fa-building" style="color: var(--accent-gold);"></i> خطوات وإجراءات تأسيس شركة في العراق',
+                content: `
+                    <p>يتطلب تأسيس الشركات في العراق اتباع خطوات قانونية محددة أمام دائرة تسجيل الشركات في وزارة التجارة العراقية وفق قانون الشركات رقم 21 لسنة 1997 المعدل:</p>
+                    <h4>الخطوة الأولى: اختيار الاسم التجاري وحجزه</h4>
+                    <p>تحديد اسم الشركة والحصول على عدم انشغال للاسم من اتحاد الغرف التجارية العراقية.</p>
+                    <h4>الخطوة الثانية: صياغة عقد التأسيس</h4>
+                    <p>إعداد عقد تأسيس الشركة بواسطة محامي متخصص يوضح فيه:</p>
+                    <ul>
+                        <li>اسم الشركة ونشاطها ونوعها (محدودة، مساهمة، مشروع فردي).</li>
+                        <li>رأس مال الشركة ومقدار أسهم الشركاء.</li>
+                        <li>عنوان المقر الرئيسي للشركة داخل العراق.</li>
+                    </ul>
+                    <h4>الخطوة الثالثة: إيداع رأس المال والافتتاح المصرفي</h4>
+                    <p>إيداع رأس مال الشركة المعتمد في أحد المصارف العراقية المعتمدة واستحصال تأييد مصرفي بذلك.</p>
+                    <h4>الخطوة الرابعة: تقديم الملف والموافقات الأمنية</h4>
+                    <p>تقديم الملف كاملاً لدائرة تسجيل الشركات واستحصال الموافقات الأمنية والقطاعية بحسب نشاط الشركة الصادر به شهادة التأسيس.</p>
+                `
+            },
+            'realestate-guide': {
+                title: '<i class="fa-solid fa-file-contract" style="color: var(--accent-gold);"></i> دليل السلامة القانونية في العقود العقارية',
+                content: `
+                    <p>لتجنب المشاكل القانونية أو النصب العقاري عند شراء أو استئجار عقار في العراق، يجب مراعاة النقاط التالية:</p>
+                    <h4>1. التأكد من سند الملكية (المُلك):</h4>
+                    <p>الاطلاع على سند الملكية الصادر حديثاً من دائرة التسجيل العقاري (الطابو) والتأكد من عدم وجود حجز أو إشارة رهن على العقار.</p>
+                    <h4>2. صياغة المقاولة/العقد الابتدائي:</h4>
+                    <p>يجب تثبيت كافة التفاصيل المالية من العربون والمبلغ الكلي ومواعيد التسديد وغرامات التأخير بشكل واضح ودقيق.</p>
+                    <h4>3. التثبت من صفة البائع:</h4>
+                    <p>التأكد من أن البائع هو المالك الأصيل أو لديه وكالة رسمية عامة أو خاصة سارية المفعول ومصادقة حسب الأصول.</p>
+                `
+            }
+        };
+
+        function openModal(docKey) {
+            const doc = docsData[docKey];
+            if (doc) {
+                document.getElementById('modalContent').innerHTML = `
+                    <h3 class="modal-title">${doc.title}</h3>
+                    <div class="modal-body">${doc.content}</div>
+                `;
+                document.getElementById('modalOverlay').classList.add('active');
+            }
+        }
+
+        function closeModal() {
+            document.getElementById('modalOverlay').classList.remove('active');
+        }
+
+        // إغلاق النافذة عند الضغط خارج المربع
+        document.getElementById('modalOverlay').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeModal();
+            }
         });
 
         // سكربت إرسال الطلب للواتساب
