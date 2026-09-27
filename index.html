@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>المحامي سيف سامر - مكتب الاستشارات والمحاماة</title>
+    <!-- خط تجوال من Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome للأيقونات -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-dark: #0f172a;
+            --secondary-dark: #1e293b;
+            --accent-gold: #c5a059;
+            --accent-gold-hover: #e2b86b;
+            --text-light: #f8fafc;
+            --text-muted: #94a3b8;
+            --bg-light: #f1f5f9;
+            --white: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Tajawal', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: #334155;
+            line-height: 1.6;
+        }
+
+        /* الهيدر وقائمة التنقل */
+        header {
+            background-color: var(--primary-dark);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+            border-bottom: 2px solid var(--accent-gold);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .logo {
+            color: var(--text-light);
+            font-size: 1.5rem;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+
+        .logo i {
+            color: var(--accent-gold);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-gold);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.9)), 
+                        url('https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&q=80&w=1200') center/cover;
+            color: var(--text-light);
+            padding: 6rem 2rem;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            color: var(--accent-gold);
+            margin-bottom: 1rem;
+            font-weight: 800;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            color: #cbd5e1;
+        }
+
+        .btn-gold {
+            background-color: var(--accent-gold);
+            color: var(--primary-dark);
+            padding: 0.8rem 2rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            display: inline-block;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-gold:hover {
+            background-color: var(--accent-gold-hover);
+            transform: translateY(-2px);
+        }
+
+        /* أقسام المحتوى العامة */
+        .section-padding {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            color: var(--primary-dark);
+            margin-bottom: 1rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background-color: var(--accent-gold);
+            margin: 0.5rem auto 2.5rem auto;
+        }
+
+        /* عن المحامي */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-right: 5px solid var(--accent-gold);
+        }
+
+        /* الخدمات القانونية */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .service-card i {
+            font-size: 2.5rem;
+            color: var(--accent-gold);
+            margin-bottom: 1rem;
+        }
+
+        .service-card h3 {
+            color: var(--primary-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        /* نموذج التواصل وحجز الاستشارة */
+        .consultation-section {
+            background-color: var(--primary-dark);
+            color: var(--text-light);
+            padding: 5rem 2rem;
+        }
+
+        .form-container {
+            max-width: 700px;
+            margin: 0 auto;
+            background-color: var(--secondary-dark);
+            padding: 2.5rem;
+            border-radius: 12px;
+            border: 1px solid rgba(197, 160, 89, 0.3);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--accent-gold);
+            font-weight: 500;
+        }
+
+        .form-group input, 
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border-radius: 6px;
+            border: 1px solid #334155;
+            background-color: #0f172a;
+            color: var(--text-light);
+            font-size: 1rem;
+        }
+
+        .form-group input:focus, 
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent-gold);
+        }
+
+        /* الفوتر */
+        footer {
+            background-color: #090d16;
+            color: var(--text-muted);
+            text-align: center;
+            padding: 2rem;
+            border-top: 1px solid #1e293b;
+        }
+
+        footer p {
+            margin-bottom: 0.5rem;
+        }
+
+        /* التجاوب مع الموبايل */
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .section-padding {
+                padding: 3rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- الهيدر -->
+    <header>
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <i class="fa-solid fa-scale-balanced"></i>
+                <span>المحامي سيف سامر</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#home">الرئيسية</a></li>
+                <li><a href="#about">عن المحامي</a></li>
+                <li><a href="#services">الخدمات</a></li>
+                <li><a href="#consultation">طلب استشارة</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- الهيرو / الرئيسية -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>مكتب المحامي سيف سامر</h1>
+            <p>تقديم أفضل الاستشارات القانونية والتمثيل القضائي بكل احترافية وأمانة للظفر بحقوقكم.</p>
+            <a href="#consultation" class="btn-gold">اطلب استشارة قانونية الآن</a>
+        </div>
+    </section>
+
+    <!-- عن المحامي -->
+    <section id="about" class="section-padding">
+        <h2 class="section-title">عن المحامي</h2>
+        <div class="about-grid">
+            <h3>أهلاً بكم في المكتب القانوني للمحامي سيف سامر</h3>
+            <p>نعمل بجد واجتهاد لتقديم الخدمات القانونية الشاملة للأفراد والشركات. نؤمن بأن سيادة القانون والعدالة هي الأساس، ونسعى دائماً لتقديم حلول قانونية دقيقة ومبتكرة تتناسب مع احتياجات موكلينا وحماية مصالحهم بحرفية عالية.</p>
+        </div>
+    </section>
+
+    <!-- الخدمات القانونية -->
+    <section id="services" class="section-padding">
+        <h2 class="section-title">الخدمات القانونية</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <i class="fa-solid fa-gavel"></i>
+                <h3>القضايا المدنية والتجارية</h3>
+                <p>متابعة كافة الدعاوى العقارية، التعويضات، والعقود التجارية وإبرامها.</p>
+            </div>
+            <div class="service-card">
+                <i class="fa-solid fa-users"></i>
+                <h3>قضايا الأحوال الشخصية</h3>
+                <p>الترافع في جميع المسائل المتعلقة بالأسرة، التركات، والدعاوى الشرعية.</p>
+            </div>
+            <div class="service-card">
+                <i class="fa-solid fa-building-shield"></i>
+                <h3>استشارات الشركات</h3>
+                <p>تأسيس الشركات، صياغة اللوائح الداخلية، وتأمين الحماية القانونية للنشاط التجاري.</p>
+            </div>
+            <div class="service-card">
+                <i class="fa-solid fa-shield-halved"></i>
+                <h3>القضايا الجزائية</h3>
+                <p>الدفاع عن الحقوق والتمثيل أمام مختلف المحاكم والجهات المختصة.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- نموذج الاستشارة والتواصل -->
+    <section id="consultation" class="consultation-section">
+        <div class="form-container">
+            <h2 class="section-title" style="color: var(--text-light);">طلب استشارة قانونية</h2>
+            <p style="text-align: center; margin-bottom: 2rem; color: var(--text-muted);">قم بملء البيانات أدناه وسيتم فتح الواتساب وتجهيز الرسالة وتلقيها فوراً.</p>
+
+            <!-- استبدل الرابط أدناه برابط Formspree الخاص بإيميلك للإرسال إلى البريد -->
+            <form id="legalForm" action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST">
+                <div class="form-group">
+                    <label for="fullName">الاسم الثلاثي</label>
+                    <input type="text" id="fullName" name="fullName" placeholder="أدخل اسمك الثلاثي" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">رقم الهاتف</label>
+                    <input type="tel" id="phone" name="phone" placeholder="أدخل رقم هاتفك" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="subject">موضوع الدعوى / تفاصيل الاستشارة</label>
+                    <textarea id="subject" name="subject" rows="5" placeholder="اكتب تفاصيل الاستشارة هنا..." required></textarea>
+                </div>
+
+                <button type="submit" class="btn-gold" style="width: 100%;">إرسال الطلب عبر الواتساب والبريد</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- الفوتر -->
+    <footer>
+        <p>جميع الحقوق محفوظة &copy; 2026 - مكتب المحامي سيف سامر</p>
+        <p>هاتف: 07888001875</p>
+    </footer>
+
+    <!-- سكربت تحويل البيانات إلى واتساب -->
+    <script>
+        document.getElementById('legalForm').addEventListener('submit', function(e) {
+            // نمنع إعادة تحميل الصفحة الافتراضية للنموذج لإتاحة الإرسال عبر الواتساب
+            // إذا كنت تريد الإرسال إلى البريد عبر Formspree أولاً، يمكنك إلغاء e.preventDefault() بعد إعداد الخدمة.
+            e.preventDefault();
+
+            // جلب البيانات من الحقول
+            const name = document.getElementById('fullName').value;
+            const phone = document.getElementById('phone').value;
+            const subject = document.getElementById('subject').value;
+
+            // رقم الهاتف المحدد (مع المفتاح الدولي للعراق +964)
+            const whatsappNumber = "9647888001875";
+
+            // صياغة النص المرسل على الواتساب
+            const message = `السلام عليكم ورحمة الله وبركاته،%0A%0A` +
+                            `طلب استشارة قانونية من الموقع الإلكتروني:%0A` +
+                            `👤 *الاسم الثلاثي:* ${encodeURIComponent(name)}%0A` +
+                            `📱 *رقم الهاتف:* ${encodeURIComponent(phone)}%0A` +
+                            `⚖️ *موضوع الدعوى/الاستشارة:*%0A${encodeURIComponent(subject)}`;
+
+            // رابط فتح الواتساب
+            const whatsappURL = `https://wa.me/${whatsappNumber}?text=${message}`;
+
+            // فتح الواتساب في نافذة جديدة
+            window.open(whatsappURL, '_blank');
+
+            // اختياري: إرسال النموذج فعلياً إلى البريد في الخلفية
+            this.submit();
+        });
+    </script>
+</body>
+</html>
