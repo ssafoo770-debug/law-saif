@@ -103,10 +103,10 @@
             background-color: var(--accent-gold-hover);
         }
 
-        /* Hero Section - صورة ميزان العدالة الفخمة والكلاسيكية */
+        /* Hero Section */
         .hero {
-            background: linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.88)), 
-                        url('https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&q=80&w=1600') center/cover;
+            background: linear-gradient(rgba(15, 23, 42, 0.82), rgba(15, 23, 42, 0.88)), 
+                        url('https://images.unsplash.com/photo-1436450412740-6b988f486c6b?auto=format&fit=crop&q=80&w=1600') center/cover;
             color: var(--text-light);
             padding: 7rem 2rem;
             text-align: center;
@@ -173,7 +173,7 @@
             margin: 0.5rem auto 2.5rem auto;
         }
 
-        /* عن المحامي مع ظل ميزان العدالة الشفاف */
+        /* عن المحامي مع ظل ميزان العدالة في الخلفية */
         .about-grid {
             position: relative;
             display: grid;
@@ -243,7 +243,7 @@
         .consultation-section {
             background-color: var(--primary-dark);
             color: var(--text-light);
-            padding: 5rem 2rem 3rem 2rem;
+            padding: 5rem 2rem;
         }
 
         .form-container {
@@ -281,67 +281,6 @@
         .form-group textarea:focus {
             outline: none;
             border-color: var(--accent-gold);
-        }
-
-        /* قسم التواصل المباشر في الأسفل */
-        .direct-contact-box {
-            margin-top: 3rem;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(197, 160, 89, 0.2);
-            text-align: center;
-        }
-
-        .direct-contact-box h3 {
-            color: var(--accent-gold);
-            font-size: 1.4rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .direct-contact-number {
-            font-size: 1.8rem;
-            font-weight: 800;
-            color: var(--text-light);
-            direction: ltr;
-            display: inline-block;
-            margin: 0.5rem 0 1.2rem 0;
-            letter-spacing: 1px;
-        }
-
-        .contact-btns-container {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-
-        .btn-whatsapp {
-            background-color: #25D366;
-            color: #ffffff;
-            padding: 0.7rem 1.5rem;
-            border-radius: 6px;
-            text-decoration: none;
-            font-weight: 700;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            transition: opacity 0.3s;
-        }
-
-        .btn-telegram {
-            background-color: #0088cc;
-            color: #ffffff;
-            padding: 0.7rem 1.5rem;
-            border-radius: 6px;
-            text-decoration: none;
-            font-weight: 700;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            transition: opacity 0.3s;
-        }
-
-        .btn-whatsapp:hover, .btn-telegram:hover {
-            opacity: 0.9;
         }
 
         /* الفوتر */
@@ -386,10 +325,6 @@
                 font-size: 14rem;
                 left: -20px;
                 bottom: -20px;
-            }
-
-            .contact-btns-container {
-                flex-direction: column;
             }
         }
     </style>
@@ -486,27 +421,13 @@
 
                 <button type="submit" class="btn-gold" style="width: 100%;">إرسال الطلب عبر الواتساب والبريد</button>
             </form>
-
-            <!-- قسم للتواصل المباشر عبر الواتساب أو تليكرام -->
-            <div class="direct-contact-box">
-                <h3>للتواصل عبر الواتساب أو تليكرام</h3>
-                <div class="direct-contact-number">07888001875</div>
-                <div class="contact-btns-container">
-                    <a href="https://wa.me/9647888001875" target="_blank" class="btn-whatsapp">
-                        <i class="fa-brands fa-whatsapp"></i> مراسلة عبر الواتساب
-                    </a>
-                    <a href="https://t.me/+9647888001875" target="_blank" class="btn-telegram">
-                        <i class="fa-brands fa-telegram"></i> مراسلة عبر تليكرام
-                    </a>
-                </div>
-            </div>
         </div>
     </section>
 
     <!-- الفوتر -->
     <footer>
         <p>جميع الحقوق محفوظة &copy; 2026 - مكتب المحامي سيف سامر</p>
-        <p>للاتصال المباشر: <a href="tel:07888001875" dir="ltr">07888001875</a></p>
+        <p>للاتصال المباشر: <a href="tel:07888001875" dir="ltr">07888001875</a> | <a href="https://wa.me/9647888001875" target="_blank">تواصل عبر الواتساب <i class="fa-brands fa-whatsapp"></i></a></p>
     </footer>
 
     <!-- سكربت تحويل البيانات إلى واتساب -->
