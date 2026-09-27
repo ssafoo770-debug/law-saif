@@ -36,6 +36,32 @@
             overflow-x: hidden;
         }
 
+        /* زر تشغيل الموسيقى العائم */
+        .music-btn-floating {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            z-index: 9999;
+            background-color: var(--accent-gold);
+            color: var(--primary-dark);
+            border: none;
+            padding: 0.8rem 1.2rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .music-btn-floating:hover {
+            background-color: var(--accent-gold-hover);
+            transform: scale(1.05);
+        }
+
         /* الهيدر وقائمة التنقل */
         header {
             background-color: var(--primary-dark);
@@ -89,7 +115,7 @@
             color: var(--accent-gold);
         }
 
-        /* Hero Section - صورة خلفية مكتبة قانونية داكنة وفخمة */
+        /* Hero Section */
         .hero {
             background: linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.9)), 
                         url('https://images.unsplash.com/photo-1505664194779-8beaceb93744?auto=format&fit=crop&q=80&w=1600') center/cover;
@@ -328,6 +354,17 @@
 </head>
 <body>
 
+    <!-- مشغل الموسيقى وزر التحكم العائم -->
+    <audio id="bgMusic" loop>
+        <!-- رابط لمقطوعة بيانو هادئة وراقية مناسبة للمحاماة -->
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+    </audio>
+
+    <button class="music-btn-floating" onclick="toggleMusic()">
+        <i id="musicIcon" class="fa-solid fa-music"></i>
+        <span id="musicText">تشغيل الموسيقى</span>
+    </button>
+
     <!-- الهيدر -->
     <header>
         <div class="nav-container">
@@ -421,30 +458,53 @@
         <p>جميع الحقوق محفوظة &copy; 2026 - مكتب المحامي سيف سامر</p>
     </footer>
 
-    <!-- سكربت تحويل البيانات إلى واتساب -->
+    <!-- السكربتات -->
     <script>
+        // سكربت التحكم بالموسيقى
+        function toggleMusic() {
+            const music = document.getElementById('bgMusic');
+            const icon = document.getElementById('musicIcon');
+            const text = document.getElementById('musicText');
+
+            if (music.paused) {
+                music.play();
+                icon.className = 'fa-solid fa-pause';
+                text.textContent = 'إيقاف الموسيقى';
+            } else {
+                music.pause();
+                icon.className = 'fa-solid fa-music';
+                text.textContent = 'تشغيل الموسيقى';
+            }
+        }
+
+        // محاولة تشغيل تلقائي عند أول كليك في أي مكان بالموقع
+        document.body.addEventListener('click', function() {
+            const music = document.getElementById('bgMusic');
+            if (music.paused) {
+                music.play().then(() => {
+                    document.getElementById('musicIcon').className = 'fa-solid fa-pause';
+                    document.getElementById('musicText').textContent = 'إيقاف الموسيقى';
+                }).catch(() => {});
+            }
+        }, { once: true });
+
+        // سكربت إرسال الطلب للواتساب
         document.getElementById('legalForm').addEventListener('submit', function(e) {
             e.preventDefault();
 
-            // جلب البيانات من الحقول
             const name = document.getElementById('fullName').value;
             const phone = document.getElementById('phone').value;
             const subject = document.getElementById('subject').value;
 
-            // رقم الهاتف المحدد (مع المفتاح الدولي للعراق +964)
             const whatsappNumber = "9647888001875";
 
-            // صياغة النص المرسل على الواتساب
             const message = `السلام عليكم ورحمة الله وبركاته،%0A%0A` +
                             `طلب استشارة قانونية من الموقع الإلكتروني:%0A` +
                             `👤 *الاسم الثلاثي:* ${encodeURIComponent(name)}%0A` +
                             `📱 *رقم الهاتف:* ${encodeURIComponent(phone)}%0A` +
                             `⚖️ *موضوع الدعوى/الاستشارة:*%0A${encodeURIComponent(subject)}`;
 
-            // رابط فتح الواتساب
             const whatsappURL = `https://wa.me/${whatsappNumber}?text=${message}`;
-
-            // فتح الواتساب في نافذة جديدة
             window.open(whatsappURL, '_blank');
         });
     </script>
