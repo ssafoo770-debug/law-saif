@@ -115,7 +115,7 @@
             color: var(--accent-gold);
         }
 
-        /* Hero Section */
+        /* Hero Section - صورة خلفية قانونية فاخرة */
         .hero {
             background: linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.9)), 
                         url('https://images.unsplash.com/photo-1505664194779-8beaceb93744?auto=format&fit=crop&q=80&w=1600') center/cover;
@@ -354,10 +354,9 @@
 </head>
 <body>
 
-    <!-- مشغل الموسيقى وزر التحكم العائم -->
+    <!-- مشغل الموسيقى وزر التحكم العائم (موسيقى بيانو ورقيقة جداً) -->
     <audio id="bgMusic" loop>
-        <!-- رابط لمقطوعة بيانو هادئة وراقية مناسبة للمحاماة -->
-        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+        <source src="https://www.fesliyanstudios.com/musicfiles/2019-04-23_-_Quiet_Time_-_David_Fesliyan.mp3" type="audio/mpeg">
     </audio>
 
     <button class="music-btn-floating" onclick="toggleMusic()">
@@ -477,7 +476,7 @@
             }
         }
 
-        // محاولة تشغيل تلقائي عند أول كليك في أي مكان بالموقع
+        // تشغيل الموسيقى عند أول ضغطة زائر على أي مكان بالموقع
         document.body.addEventListener('click', function() {
             const music = document.getElementById('bgMusic');
             if (music.paused) {
