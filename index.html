@@ -555,39 +555,6 @@
             }
         }
 
-        /* العلم العراقي */
-        .iraq-flag {
-            display: inline-flex;
-            flex: 0 0 auto;
-            width: 54px;
-            height: 36px;
-            flex-direction: column;
-            overflow: hidden;
-            border-radius: 2px;
-            box-shadow: 0 2px 7px rgba(0,0,0,0.3);
-            transform-origin: right center;
-            animation: iraq-flag-wave 2.8s ease-in-out infinite;
-        }
-        .iraq-flag-band { display: block; height: 12px; }
-        .iraq-flag-red { background: #ce1126; }
-        .iraq-flag-white {
-            background: #fff;
-            color: #007a3d;
-            text-align: center;
-            font-family: Arial, sans-serif;
-            font-size: 10px;
-            font-weight: 700;
-            line-height: 12px;
-            white-space: nowrap;
-        }
-        .iraq-flag-black { background: #000; }
-        @keyframes iraq-flag-wave {
-            0%, 100% { transform: perspective(180px) rotateY(-9deg) skewY(-2deg); }
-            50% { transform: perspective(180px) rotateY(9deg) skewY(2deg); }
-        }
-        @media (prefers-reduced-motion: reduce) {
-            .iraq-flag { animation: none; }
-        }
     </style>
 </head>
 <body>
@@ -606,11 +573,6 @@
             <a href="#" class="logo">
                 <i class="fa-solid fa-scale-balanced"></i>
                 <span>المحامي سيف سامر</span>
-                <span class="iraq-flag" role="img" aria-label="علم العراق">
-                    <span class="iraq-flag-band iraq-flag-red"></span>
-                    <span class="iraq-flag-band iraq-flag-white" aria-hidden="true">الله أكبر</span>
-                    <span class="iraq-flag-band iraq-flag-black"></span>
-                </span>
             </a>
             <ul class="nav-links">
                 <li><a href="#home">الرئيسية</a></li>
