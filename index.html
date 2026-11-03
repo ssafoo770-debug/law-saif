@@ -159,16 +159,23 @@
 
         /* Hero Section */
         .hero {
-            background: linear-gradient(rgba(15, 23, 42, 0.68), rgba(15, 23, 42, 0.82)), 
-                        url('https://images.pexels.com/photos/6077961/pexels-photo-6077961.jpeg?auto=compress&fit=crop&w=1600&h=650&crop=bottom') center/cover;
+            background-color: var(--primary-dark);
+            background-image: linear-gradient(90deg, rgba(15, 23, 42, 0.15), rgba(15, 23, 42, 0.4)),
+                url('https://images.pexels.com/photos/6077961/pexels-photo-6077961.jpeg?auto=compress&w=1200');
+            background-position: center, right center;
+            background-size: cover, auto 100%;
+            background-repeat: no-repeat;
             color: var(--text-light);
+            min-height: 540px;
             padding: 5rem 1.5rem;
+            display: flex;
+            align-items: center;
             text-align: center;
         }
 
         .hero-content {
-            max-width: 800px;
-            margin: 0 auto;
+            max-width: 650px;
+            margin: 0 auto 0 0;
         }
 
         .hero h1 {
@@ -533,7 +540,10 @@
             }
 
             .hero {
-                padding: 3.5rem 1rem;
+                padding: 2rem 1rem 25rem;
+                min-height: 0;
+                background-position: center, center bottom;
+                background-size: cover, auto 24rem;
             }
 
             .hero h1 {
